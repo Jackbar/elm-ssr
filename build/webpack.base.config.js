@@ -5,9 +5,7 @@ const webpack = require('webpack')
 var baseConfig = {
   performance: { hints: false },//什么意思
   devtool: '#source-map',
-  entry: {
-    vendor: ['vue', 'vue-router', 'vuex', 'vuex-router-sync','axios']
-  },
+  entry: entries,
   resolve: {
     extensions: ['.js', '.vue'],
     modules: [path.join(__dirname, '../node_modules')],
@@ -25,11 +23,12 @@ var baseConfig = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../www'),
     publicPath: '/',
     //output.publicPath 表示资源的发布地址，当配置过该属性后，打包文件中所以通过相对路径引用的资源都会被配置的路径所替换。
     //如果你改成/assets/的话， 现在的所有资源的路径均为http://localhost:8080/assets/***
-    filename: 'static/js/[name].[chunkhash:7].js'
+    filename: 'dist/[name]/[name].[chunkhash:7].js',
+    // chunkFilename: 'dist/[name].[chunkhash:7].js'
   },
   module: {
     rules: [
@@ -53,5 +52,5 @@ var baseConfig = {
   ]
 }
 
-baseConfig.entry = Object.assign(baseConfig.entry, entries)
+// baseConfig.entry = Object.assign(baseConfig.entry, entries)
 module.exports = baseConfig

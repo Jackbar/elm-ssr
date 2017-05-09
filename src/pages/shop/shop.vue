@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>shop</p>
-    <a href="/msite">tomstie</a>
+    <a href="/msite/">tomstie</a>
   </div>
 </template>
 

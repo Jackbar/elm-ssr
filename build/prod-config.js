@@ -6,7 +6,7 @@ const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const entries = require('./entries')
 
 var plugins = [
-  new ExtractTextPlugin('static/css/[name].[hash:7].css'),
+  new ExtractTextPlugin('dist/[name]/[name].[hash:7].css'),
   //就可以将你的样式提取到单独的css文件里
   // this is needed in webpack 2 for minifying CSS
   new webpack.LoaderOptionsPlugin({

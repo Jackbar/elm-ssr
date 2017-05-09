@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>mstie</p>
-    <a href="/shop">toshop</a>
+    <a href="/shop/">toshop</a>
   </div>
 </template>
 

@@ -6,5 +6,5 @@ var entries = fs.readdirSync(entryPath).reduce(function (o, dirname) {
     o[dirname] = path.join(entryPath, dirname)
     return o
 }, {})
-
+console.log(entries)
 module.exports = entries

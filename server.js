@@ -21,8 +21,12 @@ let shopRenderer
 
 if (isProd) {
   // in production: create server renderer and index HTML from real fs
-  renderer = createRenderer(fs.readFileSync(resolve('./dist/server/server-bundle.js'), 'utf-8'))
-  indexHTML = parseIndex(fs.readFileSync(resolve('./dist/app.html'), 'utf-8'))
+  msiteRenderer = createRenderer(fs.readFileSync(resolve('./www/server/msite-server-bundle.js'), 'utf-8'))
+  shopRenderer = createRenderer(fs.readFileSync(resolve('./www/server/shop-server-bundle.js'), 'utf-8'))
+
+  msiteHTML = parseIndex(fs.readFileSync(resolve('./www/msite.html'), 'utf-8'))
+  shopHTML = parseIndex(fs.readFileSync(resolve('./www/shop.html'), 'utf-8'))
+
 } else {
   // in development: setup the dev server with watch and hot-reload,
   // and update renderer / index HTML on file change.
@@ -68,11 +72,12 @@ const serve = (path, cache) => express.static(resolve(path), {
 app.use(compression({ threshold: 0 }))
 app.use(favicon('./src/assets/img/logo-48.png'))
 app.use('/manifest.json', serve('./manifest.json'))
-app.use('/server', serve('./dist/server'))
-app.use('/static', serve('./dist/static'))
+app.use('/server', serve('./www/server'))
+app.use('/static', serve('./www/static'))
+app.use('/dist', serve('./www/dist'))
 
 //msite
-app.get(['/msite'], (req, res) => {
+app.get(['/','/msite'], (req, res) => {
   if (!msiteRenderer) {
     return res.end('waiting for compilation... refresh in a moment.')
   }

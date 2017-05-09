@@ -9,8 +9,8 @@ module.exports = function setupDevServer (app, opts) {
     clientConfig.entry[name] = ['webpack-hot-middleware/client'].concat(clientConfig.entry[name])
 })
 
-  //服务端多入口
-  clientConfig.output.filename = '[name].js'
+  //浏览器端多入口
+  clientConfig.output.filename = 'dist/[name]/[name].js'
   clientConfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()

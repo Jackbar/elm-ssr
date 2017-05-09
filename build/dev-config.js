@@ -21,7 +21,7 @@ Object.keys(entries).forEach(function (entry) {
 
 module.exports = {
     module: {
-        rules: [      {
+        rules: [{
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
         loader: 'url-loader',
         options: {
