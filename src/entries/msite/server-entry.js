@@ -1,4 +1,4 @@
-import { app, router, store } from './app'
+import { app, router } from './app'
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default context => {
@@ -23,7 +23,7 @@ export default context => {
     console.log(`data pre-fetch: ${Date.now() - s}ms`)
     // set initial store on context
     // the request handler will inline the state in the HTML response.
-    context.initialState = store.state
+    // context.initialState = store.state
     return app
   })
 }

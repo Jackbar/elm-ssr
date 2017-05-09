@@ -30,20 +30,15 @@ module.exports = function setupDevServer (app, opts) {
     const fs = devMiddleware.fileSystem
 
     //在这里判断文件是否在内存中
-    const appPath = path.join(clientConfig.output.path, 'app.html')//client ssr 页面
-    if (fs.existsSync(appPath)) {
-      const index = fs.readFileSync(appPath, 'utf-8')
-      opts.indexUpdated(index)
+    const msitePath = path.join(clientConfig.output.path, 'msite.html')//client ssr 页面
+    if (fs.existsSync(msitePath)) {
+      const index = fs.readFileSync(msitePath, 'utf-8')
+      opts.msiteUpdated(index)
     }
-     const josePath = path.join(clientConfig.output.path, 'jose.html')//jose spa 页面
-    if (fs.existsSync(josePath)) {
-      const jose = fs.readFileSync(josePath, 'utf-8')
-      opts.joseUpdated(jose)
-    }
-     const phinePath = path.join(clientConfig.output.path, 'phine.html')//phine spa 页面
-    if (fs.existsSync(phinePath)) {
-      const phine = fs.readFileSync(phinePath, 'utf-8')
-      opts.phineUpdated(phine)
+    const shopPath = path.join(clientConfig.output.path, 'shop.html')//client ssr 页面
+    if (fs.existsSync(shopPath)) {
+      const index = fs.readFileSync(shopPath, 'utf-8')
+      opts.shopUpdated(index)
     }
   })
 
@@ -53,13 +48,15 @@ module.exports = function setupDevServer (app, opts) {
   // watch and update server renderer
   const serverCompiler = webpack(serverConfig)
   const mfs = new MFS()
-  const outputPath = path.join(serverConfig.output.path, serverConfig.output.filename)
+  // const outputPath = path.join(serverConfig.output.path, serverConfig.output.filename)
   serverCompiler.outputFileSystem = mfs
   serverCompiler.watch({}, (err, stats) => {
     if (err) throw err
     stats = stats.toJson()
     stats.errors.forEach(err => console.error(err))
     stats.warnings.forEach(err => console.warn(err))
-    opts.bundleUpdated(mfs.readFileSync(outputPath, 'utf-8'))
+    opts.msiteBundleUpdated(mfs.readFileSync(path.join(serverConfig.output.path, 'server/msite-server-bundle.js'), 'utf-8'))
+    opts.shopBundleUpdated(mfs.readFileSync(path.join(serverConfig.output.path, 'server/shop-server-bundle.js'), 'utf-8'))
+
   })
 }

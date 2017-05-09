@@ -6,9 +6,12 @@ const path = require('path')
 const config = merge(base, {
   target: 'node',
   devtool: false,
-  entry: './src/entries/app/server-entry.js',
+  entry: {
+    msite:'./src/entries/msite/server-entry.js',
+    shop:'./src/entries/shop/server-entry.js',
+  },
   output: {
-    filename: 'server/server-bundle.js',
+    filename: 'server/[name]-server-bundle.js',
     libraryTarget: 'commonjs2'
   },
   node: { __dirname: true },
