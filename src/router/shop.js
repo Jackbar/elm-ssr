@@ -10,9 +10,11 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
-  routes: [
-    { path: '/shop', name: 'h', component: shop}
-  ]
+  routes: [{
+    path: '/shop',
+    name: 'h',
+    component: shop
+  }]
 })
 
 export default router

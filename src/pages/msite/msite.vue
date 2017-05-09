@@ -1,12 +1,12 @@
 <template>
-  <div>
+<div>
     <p>mstie</p>
     <a href="/shop/">toshop</a>
-  </div>
+</div>
 </template>
 
 <script>
-  export default{}
+export default {}
 </script>
 
 <style>

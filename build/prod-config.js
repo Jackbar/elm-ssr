@@ -23,12 +23,15 @@ var plugins = [
   }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
-    minChunks: function (module, count) {
+    minChunks: function(module, count) {
       return (module.resource && /\.js$/.test(module.resource) && module.resource.indexOf('node_modules') > 0)
-    }// 最后返回一个整数 设置一个依赖被引用超过多少次就提取出来
+    } // 最后返回一个整数 设置一个依赖被引用超过多少次就提取出来
   }),
   //将公共模块提取，生成名为`vendor`的chunk
-  new webpack.optimize.CommonsChunkPlugin({ name: 'manifest', chunks: ['vendor'] }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'manifest',
+    chunks: ['vendor']
+  }),
   //这里的意思是打包完成后提取数组模块中的公共模块，数组内的元素与entry一一对应
   // new SWPrecachePlugin({离线缓存先不弄了
   //   cacheId: 'vue-hn',
@@ -38,7 +41,7 @@ var plugins = [
   // })
 ]
 
-Object.keys(entries).forEach(function (entry) {
+Object.keys(entries).forEach(function(entry) {
   plugins.push(new HTMLPlugin({
     chunks: [
       'manifest', 'vendor', entry
@@ -56,7 +59,7 @@ Object.keys(entries).forEach(function (entry) {
 })
 
 module.exports = {
-   // devtool:,//原来是false
+  // devtool:,//原来是false
   module: {
     rules: [{
       test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,

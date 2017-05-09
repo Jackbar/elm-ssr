@@ -7,14 +7,16 @@ const config = merge(base, {
   target: 'node',
   devtool: false,
   entry: {
-    msite:'./src/entries/msite/server-entry.js',
-    shop:'./src/entries/shop/server-entry.js',
+    msite: './src/entries/msite/server-entry.js',
+    shop: './src/entries/shop/server-entry.js',
   },
   output: {
     filename: 'server/[name]-server-bundle.js',
     libraryTarget: 'commonjs2'
   },
-  node: { __dirname: true },
+  node: {
+    __dirname: true
+  },
   externals: Object.keys(require('../package.json').dependencies),
   module: {
     rules: [{
@@ -24,7 +26,7 @@ const config = merge(base, {
         limit: 10000,
         name: 'static/img/[name].[hash:7].[ext]'
       }
-    },{
+    }, {
       test: /\.vue$/,
       loader: 'vue-loader'
     }]

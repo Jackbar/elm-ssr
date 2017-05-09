@@ -4,10 +4,10 @@ const MFS = require('memory-fs')
 const clientConfig = require('./webpack.client.config')
 const serverConfig = require('./webpack.server.config')
 
-module.exports = function setupDevServer (app, opts) {
+module.exports = function setupDevServer(app, opts) {
   Object.keys(clientConfig.entry).forEach(function(name) {
     clientConfig.entry[name] = ['webpack-hot-middleware/client'].concat(clientConfig.entry[name])
-})
+  })
 
   //浏览器端多入口
   clientConfig.output.filename = 'dist/[name]/[name].js'
@@ -30,12 +30,12 @@ module.exports = function setupDevServer (app, opts) {
     const fs = devMiddleware.fileSystem
 
     //在这里判断文件是否在内存中
-    const msitePath = path.join(clientConfig.output.path, 'msite.html')//client ssr 页面
+    const msitePath = path.join(clientConfig.output.path, 'msite.html') //client ssr 页面
     if (fs.existsSync(msitePath)) {
       const index = fs.readFileSync(msitePath, 'utf-8')
       opts.msiteUpdated(index)
     }
-    const shopPath = path.join(clientConfig.output.path, 'shop.html')//client ssr 页面
+    const shopPath = path.join(clientConfig.output.path, 'shop.html') //client ssr 页面
     if (fs.existsSync(shopPath)) {
       const index = fs.readFileSync(shopPath, 'utf-8')
       opts.shopUpdated(index)

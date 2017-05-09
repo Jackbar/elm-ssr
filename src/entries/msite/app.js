@@ -11,4 +11,7 @@ const app = new Vue({
   ...App
 })
 
-export { app, router }
+export {
+  app,
+  router
+}

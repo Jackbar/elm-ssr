@@ -1,16 +1,16 @@
 <template>
-  <div>
+<div>
     <p>shop</p>
     <a href="/msite/">tomstie</a>
-  </div>
+</div>
 </template>
 
 <script>
-  export default{}
+export default {}
 </script>
 
 <style>
-  p{
+p {
     color: pink;
-  }
+}
 </style>

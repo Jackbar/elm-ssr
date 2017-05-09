@@ -15,18 +15,18 @@ var config = merge(base, {
 config = merge(config, {
   module: {
     rules: [{
-        test: /\.vue$/,
-        enforce: 'pre',
-        loader: 'vue-loader',
-        options: vueConfig
-      },]
+      test: /\.vue$/,
+      enforce: 'pre',
+      loader: 'vue-loader',
+      options: vueConfig
+    }, ]
   }
 })
 
 if (process.env.NODE_ENV === 'production') {
-    config = merge(config, prodConfig)
+  config = merge(config, prodConfig)
 } else {
-    config = merge(config, devConfig)
+  config = merge(config, devConfig)
 }
 
 module.exports = config

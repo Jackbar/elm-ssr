@@ -3,7 +3,9 @@ const entries = require('./entries')
 const webpack = require('webpack')
 
 var baseConfig = {
-  performance: { hints: false },//什么意思
+  performance: {
+    hints: false
+  }, //什么意思
   devtool: '#source-map',
   entry: entries,
   resolve: {
@@ -31,15 +33,14 @@ var baseConfig = {
     // chunkFilename: 'dist/[name].[chunkhash:7].js'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
         //不编译包文件夹下的文件
       },
       {
-        test: /\.json$/,//需要json-loader吗？
+        test: /\.json$/, //需要json-loader吗？
         loader: 'json-loader'
       },
     ]
@@ -47,7 +48,7 @@ var baseConfig = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-     // 'process.env.VUE_ENV': '"client"'
+      // 'process.env.VUE_ENV': '"client"'
     })
   ]
 }

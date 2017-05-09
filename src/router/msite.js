@@ -10,9 +10,15 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
-  routes: [
-    { path: '/', redirect:'/msite'},
-    { path: '/msite', name: 'h', component: msite}
+  routes: [{
+      path: '/',
+      redirect: '/msite'
+    },
+    {
+      path: '/msite',
+      name: 'h',
+      component: msite
+    }
   ]
 })
 
