@@ -16,7 +16,7 @@ const router = new VueRouter({
     },
     {
       path: '/msite',
-      name: 'h',
+      name: 'msite',
       component: msite
     }
   ]
