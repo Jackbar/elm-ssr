@@ -13,7 +13,7 @@ Object.keys(entries).forEach(function(entry) {
     new HTMLPlugin({
       chunks: ['vendor', entry],
       filename: `${entry}.html`,
-      template: `src/template/${entry}.html`,
+      template: `src/template/index.html`,
       inject: true
     })
   )

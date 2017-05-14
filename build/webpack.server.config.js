@@ -11,7 +11,7 @@ const config = merge(base, {
     shop: './src/entries/shop/server-entry.js',
   },
   output: {
-    filename: 'server/[name]-server-bundle.js',
+    filename: 'server/[name]/server-bundle.js',
     libraryTarget: 'commonjs2'
   },
   node: {
